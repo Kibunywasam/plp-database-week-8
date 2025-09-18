@@ -75,26 +75,7 @@ The database comes pre-loaded with realistic sample data for immediate testing:
 - **5 Reviews**, **9 Tags**, **2 Coupons**, **3 Wishlist entries**, **3 Cart items**
 
 ---
---  Find top-rated products
-SELECT p.name, AVG(r.rating) as avg_rating
-FROM products p
-JOIN reviews r ON p.product_id = r.product_id
-GROUP BY p.product_id
-ORDER BY avg_rating DESC;
 
---  View a user's cart
-SELECT u.username, p.name, sc.quantity, p.price
-FROM shopping_cart sc
-JOIN users u ON sc.user_id = u.user_id
-JOIN products p ON sc.product_id = p.product_id
-WHERE u.username = 'john_doe';
-
---  Track shipped orders
-SELECT o.order_number, s.status, sp.name as carrier, s.tracking_number
-FROM orders o
-JOIN shipments s ON o.order_id = s.order_id
-JOIN shipping_providers sp ON s.provider_id = sp.provider_id
-WHERE o.status = 'shipped'
 ##  Setup Instructions
 
 ### Prerequisites
